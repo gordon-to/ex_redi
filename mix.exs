@@ -20,7 +20,8 @@ defmodule ExRedi.MixProject do
 
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger],
+      mod: {ExRedi, []}
     ]
   end
 
@@ -39,6 +40,7 @@ defmodule ExRedi.MixProject do
 
   defp deps do
     [
+      {:redix, "~> 0.7.0"},
       {:ex_doc, "~> 0.18.3", only: :dev},
       {:credo, "~> 0.9.0", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 0.5.1", only: [:dev, :test], runtime: false},
