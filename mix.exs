@@ -1,19 +1,21 @@
 defmodule ExRedi.MixProject do
   use Mix.Project
 
+  @github "https://github.com/l1h3r/ex_redi"
+
   def project do
     [
       app: :ex_redi,
       version: "0.1.0",
       elixir: "~> 1.6",
-      name: "ex_redi",
-      source_url: "",
+      name: "ExRedi",
       package: package(),
       description: description(),
+      source_url: @github,
+      homepage_url: @github,
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       aliases: aliases(),
-      dialyzer: dialyzer(),
       test_coverage: [tool: ExCoveralls]
     ]
   end
@@ -26,15 +28,15 @@ defmodule ExRedi.MixProject do
   end
 
   defp description do
-    ""
+    ~s(A simple Elixir client for RediSearch)
   end
 
   defp package do
     [
       files: ["lib", "mix.exs", "README.md", "LICENSE.md"],
-      maintainers: [""],
-      licenses: [""],
-      links: %{"Github" => ""}
+      maintainers: ["l1h3r"],
+      licenses: ["MIT"],
+      links: %{"Github" => @github}
     ]
   end
 
@@ -51,12 +53,6 @@ defmodule ExRedi.MixProject do
   defp aliases do
     [
       lint: ["dialyzer", "credo", "test"]
-    ]
-  end
-
-  defp dialyzer do
-    [
-      ignore_warnings: "dialyzer.ignore-warnings"
     ]
   end
 end
