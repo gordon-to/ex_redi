@@ -40,6 +40,20 @@ defmodule ExRedi do
   defguardp is_index(term) when is_binary(term) or is_atom(term)
 
   @doc false
+  def start(_type, %{redix_args: redix_args}) do
+    children = [
+      {Redix, redix_args}
+    ]
+
+    opts = [
+      strategy: :one_for_one,
+      name: ExRedi.Supervisor
+    ]
+
+    Supervisor.start_link(children, opts)
+  end
+
+  @doc false
   def start(_type, _args) do
     children = [
       {Redix, [[], [name: @redis]]}
